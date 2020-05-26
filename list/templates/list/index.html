@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>TODO list</h1>
+<form class="" action="" method="post">
+  {% csrf_token %}
+  {{form.title}}
+  <input type="submit"  value="Submit">
+
+</form>
+{% for values in todo %}
+  {% if values.done == True %}
+       <p><strike>{{values}}</strike></p>
+  {% else %}
+       <p>{{values}}</p>
+ {% endif %}
+
+<a href="{% url 'update' values.id %}">Update</a>
+<a href="{% url 'delete' values.id %}">Delete</a>
+{% endfor %}
+</body>
+</html>
